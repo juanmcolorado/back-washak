@@ -1,0 +1,37 @@
+
+const mongoose = require('mongoose')
+
+const carsSchema = new mongoose.Schema({
+  vehiculo: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
+  marca: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
+  modelo: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
+  color: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
+  placa: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: false
+  },
+})
+
+module.exports = mongoose.model('cars', carsSchema)
