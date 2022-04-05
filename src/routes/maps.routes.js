@@ -1,16 +1,15 @@
 const express = require('express')
 const createError = require('http-errors')
-const cars = require('../usecases/cars.usecase')
+const maps = require('../usecases/maps.usecase')
 const router = express.Router()
 const auth = require('../middlewares/auth.middleware')
-/* 
+
 router.get('/', async (request,response) => {
     try {
-        const allCars = await cars.getAll()
+        const allMaps = await maps.getAll()
         response.json({
             ok: true,
-            posts: allCars,
-            message: 'All Cars'
+            posts: allMaps
         })
     } catch (error) {
         response.status(400)
@@ -20,20 +19,19 @@ router.get('/', async (request,response) => {
         })
     }
 })
- */
+
 
 router.get('/:id',  async (request, response) => {
     try {
-        const carsFound = await cars.getById(request.params.id)
-        if (!carsFound) {
-            const error = new Error('cars not found')
+        const mapsFound = await maps.getById(request.params.id)
+        if (!mapsFound) {
+            const error = new Error('maps not found')
             error.status = 404
             throw error
         }
         response.json({
             ok: true,
-            cars: carsFound,
-            message: 'Car found successfully'
+            cars: mapsFound
         })
     } catch (error) {
         response.status(error.status || 500)
@@ -47,11 +45,11 @@ router.get('/:id',  async (request, response) => {
 router.post('/', auth, async (request, response) => {
     try {
         console.log('id',request.user)
-        const carsCreated = await cars.create(request.user.id,request.body)
+        const mapsCreated = await maps.create(request.user.id,request.body)
         response.json({
             ok: true,
-            message: 'Car asigned',
-            cars: carsCreated
+            message: 'Map asigned',
+            cars: mapsCreated
         })
     } catch (error) {
         response.status(error.status || 500)
@@ -64,18 +62,18 @@ router.post('/', auth, async (request, response) => {
 
 router.delete('/:id', auth, async (request, response) => {
     try {
-        const carsDeleted = await cars.deleteById(request.params.id)
-        if (!carsDeleted) {
+        const mapsDeleted = await maps.deleteById(request.params.id)
+        if (!mapsDeleted) {
             response.status(400)
             response.json({
                 ok:false,
-                message: 'car not found'
+                message: 'maps not found'
             })
         }
         response.json({
             ok: true,
-            message: 'Car Deleted',
-            cars: carsDeleted
+            message: 'Map deleted',
+            cars: mapsDeleted
         })
     } catch (error) {
         response.status(400)
@@ -89,20 +87,20 @@ router.delete('/:id', auth, async (request, response) => {
 router.patch('/:id', auth, async (request, response) => {
     try {
         const id = request.params.id
-        const newCarsData = request.body
-        const carsUpdate = await cars.patchByID(id,newCarsData)
-        if (!carsUpdate) {
+        const newMapsData = request.body
+        const mapsUpdate = await maps.patchByID(id,newMapsData)
+        if (!mapsUpdate) {
             response.status(404)
             response.json({
                 ok: false,
-                message: "car id not found"
+                message: "map id not found"
             })
             return
         }
         response.json({
             ok: true,
-            message: 'car updated',
-            cars: carsUpdate
+            message: 'Map updated',
+            cars: mapsUpdate
         })
     } catch (error) {
         response.status(500)
@@ -112,22 +110,5 @@ router.patch('/:id', auth, async (request, response) => {
         })
     }
 })
-
-router.get('/',auth, async(request, response)=>{
-    try {
-        const allCars = await cars.getByUserId(request.user.id)
-        response.json({
-            ok:true,
-            allCars
-        })
-    } catch (error) {
-        response.status(500)
-        response.json({
-            ok:false,
-            message: error.message
-        })
-    }
-})
-
 
 module.exports = router
