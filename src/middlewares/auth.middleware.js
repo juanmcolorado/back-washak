@@ -1,18 +1,21 @@
 const jwt = require('../lib/jwt.lib')
 
-function auth(request, response, next) {
+function auth(req, res, next) {
     try {
-        const authorization = request.headers.authorization || ''
+        const authorization = req.headers.authorization || ''
         const token = authorization.replace('Bearer ', '')
-        jwt.verify(token)
+        const payload = jwt.verify(token)
+        console.log('TokenValidado:', payload)
+        req.user = { id: payload.id }
         next()
     } catch (error) {
-        response.status(401)
-        response.json({
+        res.status(401)
+        res.json({
             ok: false,
             error
         })
     }
 }
+
 
 module.exports = auth

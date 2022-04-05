@@ -1,6 +1,5 @@
 //enpoint -> caso de uso -> modelo
 const createError = require('http-errors')
-
 const Cars = require('../models/cars.model')
 
 function getAll() {
@@ -14,7 +13,21 @@ function getById(id) {
 function create(carsData) {
     const newCar = new Cars(carsData)
     return newCar.save()
+} 
+async function create(userId,carsData) {
+    const newCar = new Cars(carsData)
+    newCar.id = userId
+    return newCar.save()
 }
+
+/* async function create(carsData, userData) {
+    const userFound = await User.findOne({ email: userData.email })
+    console.log('userFound', userFound)
+    if (userFound) {
+        const newCar = new Cars(carsData)
+        return newCar.save()
+    }
+} */
 
 function deleteById(id) {
     return Cars.findByIdAndDelete(id)

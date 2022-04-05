@@ -1,4 +1,3 @@
-// definir el servidor
 const express = require('express')
 const cors = require('cors')
 const app = express()
@@ -16,13 +15,11 @@ app.use('/user', usersRouter)
 app.use('/cars', carsRouter)
 app.use('/auth', authRoutes)
 
-
 app.get('/', (request,response) => {
     response.json({
         ok: true,
         message: 'Washak api is ready'
     })
 })
-
 
 module.exports = app
