@@ -14,10 +14,10 @@ mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`
 
 
 .then(() =>{
-    console.log('DB conected')
+    console.log('Data Base Washak conected')
     
     server.listen(4000, ()=>{
-        console.log('Washak api is ready on http//localhost:4000')
+        console.log('Washak api backend is ready on http//localhost:4000')
     })
 })
 .catch( error =>{

@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 
 const carsSchema = new mongoose.Schema({
@@ -31,6 +30,11 @@ const carsSchema = new mongoose.Schema({
     minlength: 2,
     maxlength: 50,
     required: false
+  },
+  id: {
+    ref: "user",
+    type: mongoose.ObjectId,
+    required: true,
   },
 })
 
