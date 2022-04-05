@@ -6,6 +6,10 @@ function getAll() {
     return Cars.find()
 }
 
+function getByUserId(userId){
+    return Cars.find({user:userId}).populate()
+  }
+  
 function getById(id) {
     return Cars.findById(id)
 }
@@ -19,15 +23,6 @@ async function create(userId,carsData) {
     newCar.id = userId
     return newCar.save()
 }
-
-/* async function create(carsData, userData) {
-    const userFound = await User.findOne({ email: userData.email })
-    console.log('userFound', userFound)
-    if (userFound) {
-        const newCar = new Cars(carsData)
-        return newCar.save()
-    }
-} */
 
 function deleteById(id) {
     return Cars.findByIdAndDelete(id)
@@ -44,4 +39,5 @@ module.exports = {
     create,
     deleteById,
     patchByID,
+    getByUserId,
 }
