@@ -7,6 +7,7 @@ const carsRouter = require('./routes/cars.routes')
 const authRoutes = require('./routes/auth.routes')
 const usersRouter = require('./routes/user.routes')
 const mapsRouter = require('./routes/maps.routes')
+const serviceRouter = require('./routes/service.routes')
 
 app.use(express.json())
 app.use(cors())
@@ -16,6 +17,7 @@ app.use('/user', usersRouter)
 app.use('/cars', carsRouter)
 app.use('/auth', authRoutes)
 app.use('/maps', mapsRouter)
+app.use('/services', serviceRouter)
 
 app.get('/', (request,response) => {
     response.json({
