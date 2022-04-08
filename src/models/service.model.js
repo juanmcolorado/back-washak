@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const carsSchema = new mongoose.Schema({
+const serviceSchema = new mongoose.Schema({
   vehiculo: {
     type: String,
     minlength: 2,
@@ -31,6 +31,24 @@ const carsSchema = new mongoose.Schema({
     maxlength: 50,
     required: false
   },
+  packageWash: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
+  place: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
+  date: {
+    type: String,
+    minlength: 2,
+    maxlength: 50,
+    required: true
+  },
   id: {
     ref: "user",
     type: mongoose.ObjectId,
@@ -38,4 +56,4 @@ const carsSchema = new mongoose.Schema({
   },
 })
 
-module.exports = mongoose.model('cars', carsSchema)
+module.exports = mongoose.model('service', serviceSchema)
