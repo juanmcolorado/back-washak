@@ -22,6 +22,8 @@ router.get('/', async (request,response) => {
 })
  */
 
+
+
 router.get('/:id',  async (request, response) => {
     try {
         const carsFound = await cars.getById(request.params.id)
@@ -113,9 +115,9 @@ router.patch('/:id', auth, async (request, response) => {
     }
 })
 
-router.get('/',auth, async(request, response)=>{
+router.get('/cars/:userId',/*auth,*/ async(request, response)=>{
     try {
-        const allCars = await cars.getByUserId(request.user.id)
+        const allCars = await cars.getByUserId(request.params.userId)
         response.json({
             ok:true,
             allCars

@@ -40,7 +40,10 @@ async function login(email,password){
         throw new createError(401,'Invalid user')
     }
 
-    return jwt.sign({id:userFound._id})
+    return {
+        token : jwt.sign({ id:userFound._id }),
+        user: userFound._id
+    }
 }
 
 
