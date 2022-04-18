@@ -7,7 +7,7 @@ function getAll() {
 }
 
 function getByUserId(userId){
-    return Cars.find({user:userId}).populate()
+    return Cars.find({id:userId}).populate()
   }
   
 function getById(id) {
