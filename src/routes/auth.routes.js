@@ -11,7 +11,8 @@ router.post('/login', async (request, response) => {
         const token = await users.login(email, password)
         response.json({
             ok: true,
-            token
+            token,
+                
         })
     } catch (error) {
         response.status(error.status || 500)
