@@ -7,7 +7,7 @@ function getAll() {
 }
 
 function getByUserId(userId){
-    return Service.find({user:userId}).populate()
+    return Service.find({id:userId}).populate()
   }
   
 function getById(id) {
@@ -18,6 +18,7 @@ function create(serviceData) {
     const newService = new Service(serviceData)
     return newService.save()
 } 
+
 async function create(userId,serviceData) {
     const newService = new Service(serviceData)
     newService.id = userId
