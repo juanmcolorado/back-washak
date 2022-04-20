@@ -5,7 +5,7 @@ const carsSchema = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: true
+    required: false
   },
   marca: {
     type: String,
@@ -32,7 +32,7 @@ const carsSchema = new mongoose.Schema({
     required: false
   },
   id: {
-    ref: "user",
+    ref: "userId",
     type: mongoose.ObjectId,
     required: true,
   },

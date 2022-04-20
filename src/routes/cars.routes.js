@@ -46,10 +46,10 @@ router.get('/:id',  async (request, response) => {
     }
 })
 
-router.post('/', auth, async (request, response) => {
+router.post('/:userId', auth, async (request, response) => {
     try {
         console.log('id',request.user)
-        const carsCreated = await cars.create(request.user.id,request.body)
+        const carsCreated = await cars.create(request.params.userId,request.body)
         response.json({
             ok: true,
             message: 'Car asigned',
