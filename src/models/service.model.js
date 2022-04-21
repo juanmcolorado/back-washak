@@ -58,6 +58,10 @@ const serviceSchema = new mongoose.Schema({
   hour: {
     type: String,
   },
+  status:{
+    type: String,
+
+  },
   id: {
     ref: "user",
     type: mongoose.ObjectId,
