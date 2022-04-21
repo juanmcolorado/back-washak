@@ -11,7 +11,7 @@ const mapsSchema = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 70,
-    required: true
+    required: false
   },
   id: {
     ref: "user",

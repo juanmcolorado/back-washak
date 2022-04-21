@@ -42,10 +42,10 @@ router.get('/:id',  async (request, response) => {
     }
 })
 
-router.post('/', auth, async (request, response) => {
+router.post('/:userId', auth, async (request, response) => {
     try {
-        console.log('id',request.user)
-        const mapsCreated = await maps.create(request.user.id,request.body)
+        console.log('id',request.params.userId)
+        const mapsCreated = await maps.create(request.params.userId,request.body)
         response.json({
             ok: true,
             message: 'Map asigned',

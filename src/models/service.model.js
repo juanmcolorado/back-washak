@@ -58,6 +58,14 @@ const serviceSchema = new mongoose.Schema({
   hour: {
     type: String,
   },
+  range: {
+    type: Number,
+  },
+  comment: {
+    type: String,
+    minlength: 5,
+    maxlength: 250,
+  },
   id: {
     ref: "user",
     type: mongoose.ObjectId,

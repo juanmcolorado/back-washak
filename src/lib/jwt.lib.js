@@ -4,7 +4,7 @@ const {JWT_SECRET} = process.env
 
 
 function sign(payload ={}){
-    return jwt.sign(payload,JWT_SECRET,{expiresIn:'1h'})
+    return jwt.sign(payload,JWT_SECRET,{expiresIn:'3h'})
 }
 
 function verify(token){
