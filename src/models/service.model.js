@@ -47,7 +47,7 @@ const serviceSchema = new mongoose.Schema({
     maxlength: 50,
   },
   address: {
-    type: Number,
+    type: any,
     minlength: 2,
     maxlength: 50,
   },
