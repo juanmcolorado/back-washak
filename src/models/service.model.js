@@ -5,43 +5,36 @@ const serviceSchema = new mongoose.Schema({
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   marca: {
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   modelo: {
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   color: {
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   placa: {
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   packageWash: {
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   place: {
     type: String,
     minlength: 2,
     maxlength: 50,
-    required: false
   },
   month:{
     type: String,
@@ -52,15 +45,12 @@ const serviceSchema = new mongoose.Schema({
     type: Number,
     minlength: 2,
     maxlength: 50,
-    required: false
-
   },
   hour: {
     type: String,
   },
   status:{
     type: String,
-
   },
   id: {
     ref: "user",

@@ -112,9 +112,10 @@ router.patch('/:id', auth, async (request, response) => {
     }
 })
 
-router.get('/',auth, async(request, response)=>{
+router.get('/byUser/:userId',auth, async(request, response)=>{
     try {
-        const allService = await service.getByUserId(request.user.id)
+        console.log('aqui')
+        const allService = await service.getByUserId(request.params.userId)
         response.json({
             ok:true,
             allService

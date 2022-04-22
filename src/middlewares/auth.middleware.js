@@ -3,9 +3,11 @@ const {JWT_SECRET} = process.env
 
 function auth(req, res, next) {
     try {
+
         if (req.headers) {
             const authorization = req.headers.authorization || ''
             const token = authorization.replace('Bearer ', '')
+            
             const payload = jwt.verify(token, JWT_SECRET)
             console.log('TokenValidado:', payload)
             next()
